@@ -74,12 +74,13 @@
                                 <label for="criterio" class="form-label">Criterio de filtro</label>
                                     <br>
                                 <select name="criterio" id="criterio" class="form-select" onchange="get_valor_filtro();">
-                                    <option value="codAlumno">Codigo estudiante</option>
+                                    <option value="codAlumno">ID GDIT</option>
                                     <option value="nombres">Nombre y apellidos</option>
                                     <option value="sexo">Sexo</option>
-                                    <option value="Area">Area</option>
+                                    <option value="Area">Gerencia</option>
                                     <option value="Escuela">Escuela</option>
                                     <option value="estado">Estado</option>
+
                                 </select>
                                 </div>
                         
@@ -89,18 +90,12 @@
                                 <br>
                                 <input type="text" name="valor" id="valor" class="form-control" placeholder="Todos por defecto">
                                 <select name="valor_sexo" id="valor_sexo" class="form-select" style="display:none;">
-                                        <option value="Hombre">Hombre</option>
-                                        <option value="Mujer">Mujer</option>
-                                        <option value="Homosexual">Homosexual</option>
-                                        <option value="Lesbiana">Lesbiana</option>
-                                        <option value="Transgenero">Transgenero</option>
-                                        <option value="No binario">No binario (Compañere)</option>
-                                        <option value="">Prefiero no decirlo</option>
-                                        <option value="">No me decido</option>
+                                        <option value="Masculino">Masculino</option>   
+                                        <option value="Femenino">Femenino</option>
                                 </select>
 
                                 <select name="valor_area" id="valor_area" class="form-select"  style="display:none;">
-                                <option value="Gerencia de Logística">Gerencia de Logística</option>
+                                <option value="Gerencia de Logística">Gerencia de Logística Organizacional</option>
                                 <option value="Gerencia de Desarrollo de Proyectos">Gerencia de Desarrollo de Proyectos</option>
                                 <option value="Gerencia de Comunicaciones">Gerencia de Comunicaciones</option>
                                 </select>
@@ -113,7 +108,7 @@
 
                                 <select name="valor_estado" id="valor_estado" style="display:none;" class="form-select">
                                 <option value="ACTIVO">Activo</option>
-                                <option value="DESACTIVO">Desactivo</option>
+                                <option value="DESACTIVO">Inactivo</option>
                                 
                                 </select>
                                 
@@ -171,6 +166,23 @@
                           $criterio = "E.nombre";
                           $valor = $_POST["valor_escuela"];
                       }
+                      /*else if($criterio == "Fb"){
+                        $criterio = "I.Fb";
+                        $valor = $_POST["valor_fb"];
+                    }
+                    else if($criterio == "ig"){
+                        $criterio = "I.ig";
+                        $valor = $_POST["valor_ig"];
+                    }
+                    else if($criterio == "LinkedIn"){
+                        $criterio = "I.lnkdn";
+                        $valor = $_POST["valor_lnkdn"];
+                    } 
+                    else if($criterio == "otr"){
+                        $criterio = "I.otr";
+                        $valor = $_POST["valor_otr"];
+                    } 
+                    */
                       if($criterio == "estado"){
                           $criterio = "I.estado";
                           $valor = $_POST["valor_estado"];
@@ -197,18 +209,21 @@
               <table class="table table-striped">
              <thead class="table" style="background-color:#D8E3E7">
               <tr>
-                <th scope="col">Codigo Alumno</th>
-                <th scope="col">Nombres</th>
-                <th scope="col">Apellidos</th>
-                <th scope="col">Edad</th>
-                <th scope="col">Fecha Nacimiento</th>
-                <th scope="col">Sexo</th>
-                <th scope="col">Telefono</th>
-                <th scope="col">Correo</th>
-                <th scope="col">Area</th>
-                <th scope="col">SubArea</th>
-                <th scope="col">Escuela</th>
-                <th scope="col">Estado</th>
+                <th scope="col">ID GDIT</th>
+                <th scope="col">NOMBRES</th>
+                <th scope="col">APELLIDOS</th>
+                <th scope="col">EDAD</th>
+                <th scope="col">FECHA DE NACIMIENTO</th>
+                <th scope="col">SEXO</th>
+                <th scope="col">CELULAR</th>
+                <th scope="col">CORREO</th>
+                <th scope="col">GERENCIA</th>
+                <th scope="col">ÁREA</th>
+                <th scope="col">ESCUELA</th>
+                <th scope="col">FACEBOOK</th>
+                <th scope="col">INSTAGRAM</th>
+                <th scope="col">LinkedIn</th>
+                <th scope="col">OTRO(A)</th>
                <th scope="col"><b>EDITAR</b></th>
               </tr>
             </thead>
@@ -221,7 +236,7 @@
                 
           
                       echo "<tr>";
-                                          //para obtener los credenciales del formulario
+                            //para obtener los credenciales del formulario
                               echo  "<td>".$row['codAlumno']."</td>";
                               echo  "<td>".$row['nombres']."</td>";    
                               echo "<td>".$row['apellidos']."</td>";
@@ -235,6 +250,12 @@
                               echo "<td>".$row['Area']."</td>";
                               echo "<td>".$row['Subarea']."</td>";
                               echo "<td>".$row['Escuela']."</td>";
+                            /*
+                              echo "<td>".$row['Fb']."</td>";
+                              echo "<td>".$row['ig']."</td>";
+                              echo "<td>".$row['lnkdn']."</td>";
+                              echo "<td>".$row['otr']."</td>";
+                              */
                               echo "<td>";
                               if ($row['estado']=="ACTIVO") {
                                   echo "<span class='badge bg-success'>".$row['estado']."</span>";
