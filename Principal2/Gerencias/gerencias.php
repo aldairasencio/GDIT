@@ -86,6 +86,12 @@ $row0 = mysqli_fetch_array($result0);
                             </div>
                             Reportes
                         </a>
+                        <a class="nav-link" href="../Organigrama/index.php">
+                            <div class="sb-nav-link-icon">
+                                <i class="fa-solid fa-clone"></i>
+                            </div>
+                            Dashboard Organigrama
+                        </a>
 
                         <a class="nav-link" href="../Administradores/admi.php">
                             <div class="sb-nav-link-icon">
